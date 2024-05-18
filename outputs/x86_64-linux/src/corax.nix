@@ -21,7 +21,8 @@
         # common
         "secrets/nixos.nix"
         "modules/nixos/server/server.nix"
-        "modules/nixos/server/kubevirt-hardware-configuration.nix"
+        # "modules/nixos/server/kubevirt-hardware-configuration.nix" # FIXME: VM is not on kubervirt
+        "modules/nixos/server/proxmox-hardware-configuration.nix" # NOTE: VM is on proxmox
         # host specific
         "hosts/${name}"
       ])
