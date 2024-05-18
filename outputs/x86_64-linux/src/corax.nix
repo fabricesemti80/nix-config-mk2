@@ -16,7 +16,11 @@
     nixos-modules = map mylib.relativeToRoot [
       # common
       "secrets/nixos.nix"
-      "modules/nixos/desktop.nix"
+
+      "modules/nixos/server/server.nix"
+      "modules/nixos/server/proxmox-hardware-configuration.nix"
+
+      # "modules/nixos/desktop.nix" # FIXME Desktop config on VM
       # host specific
       "hosts/${name}"
     ];
