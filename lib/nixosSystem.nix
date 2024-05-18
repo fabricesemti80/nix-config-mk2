@@ -28,6 +28,7 @@ in
 
             home-manager.extraSpecialArgs = specialArgs;
             home-manager.users."${myvars.username}".imports = home-modules;
+            home-manager.backupFileExtension = "backup";
           }
         ]
       );
