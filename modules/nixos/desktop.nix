@@ -69,17 +69,20 @@ in {
         gvfs.enable = true; # Mount, trash, and other functionalities
         tumbler.enable = true; # Thumbnail support for images
 
+        displayManager = {
+          autoLogin = {
+            enable = true;
+            user = myvars.username;
+          };
+          # use a fake session to skip desktop manager
+          # and let Home Manager take care of the X session
+          defaultSession = "hm-session";
+        };
+
         xserver = {
           enable = true;
           displayManager = {
             lightdm.enable = true;
-            autoLogin = {
-              enable = true;
-              user = myvars.username;
-            };
-            # use a fake session to skip desktop manager
-            # and let Home Manager take care of the X session
-            defaultSession = "hm-session";
           };
           desktopManager = {
             runXdgAutostartIfNone = true;
