@@ -17,7 +17,7 @@
 
   # auto upgrade nix to the unstable version
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284
-  nix.package = pkgs.nixVersions.unstable;
+  nix.package = pkgs.nixVersions.latest; # NOTE: nixVersions.unstable has been removed. For bleeding edge (Nix master, roughly weekly updated) use nixVersions.git, otherwise use nixVersions.latest.
 
   environment.systemPackages = with pkgs; [
     git # used by nix flakes
