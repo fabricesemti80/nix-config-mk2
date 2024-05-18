@@ -1,7 +1,7 @@
 [files]
 ignore-dot = true
 ignore-files = true
-extend-exclude = ["themes/", "data/", "static-surprises/", "resources/"]
+extend-exclude = ["themes/", "data/", "static-surprises/", "resources/", "overlays/fcitx5"]
 
 [default]
 binary = false
