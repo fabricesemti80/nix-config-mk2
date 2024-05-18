@@ -34,8 +34,8 @@
       [
         {
           modules.desktop.xorg.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.impermanence.enable = true;
+          # modules.secrets.desktop.enable = true; #FIXME: no secrets!
+          # modules.secrets.impermanence.enable = true; #FIXME: no secrets!
         }
       ]
       ++ base-modules.nixos-modules;
@@ -51,8 +51,8 @@
       [
         {
           modules.desktop.wayland.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.impermanence.enable = true;
+          # modules.secrets.desktop.enable = true;  #FIXME: no secrets!
+          # modules.secrets.impermanence.enable = true;  #FIXME: no secrets!
         }
       ]
       ++ base-modules.nixos-modules;
