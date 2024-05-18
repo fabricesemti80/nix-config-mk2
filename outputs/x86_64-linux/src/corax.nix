@@ -17,6 +17,7 @@
       # common
       "secrets/nixos.nix"
       "modules/nixos/desktop.nix"
+      "modules/nixos/server/proxmox-hardware-configuration.nix"
       # host specific
       "hosts/${name}"
     ];
