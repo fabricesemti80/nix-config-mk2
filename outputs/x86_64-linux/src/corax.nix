@@ -15,7 +15,7 @@
   base-modules = {
     nixos-modules = map mylib.relativeToRoot [
       # common
-      "secrets/nixos.nix"
+      # "secrets/nixos.nix" #FIXME: no secrets!
       "modules/nixos/desktop.nix"
       "modules/nixos/server/proxmox-hardware-configuration.nix"
       # host specific
