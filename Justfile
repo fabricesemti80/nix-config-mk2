@@ -165,8 +165,8 @@ upload-idols mode="default":
   upload-vm ruby {{mode}}
   upload-vm kana {{mode}}
 
-aqua:
-  colmena apply --on '@aqua' --verbose --show-trace
+corax:
+  colmena apply --on '@corax' --verbose --show-trace
 
 aqua-local mode="default":
   use utils.nu *; \

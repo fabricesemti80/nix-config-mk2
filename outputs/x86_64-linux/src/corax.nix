@@ -4,74 +4,37 @@
   # and these arguments are used in the functions like `mylib.nixosSystem`, `mylib.colmenaSystem`, etc.
   inputs,
   lib,
-  myvars,
   mylib,
+  myvars,
   system,
   genSpecialArgs,
   ...
 } @ args: let
   # CORAX
   name = "corax";
-  base-modules = {
-    nixos-modules = map mylib.relativeToRoot [
-      # common
-      "secrets/nixos.nix"
-      "modules/nixos/desktop.nix"
-      # host specific
-      "hosts/idols-${name}"
-    ];
-    home-modules = map mylib.relativeToRoot [
-      # common
-      "home/linux/gui.nix"
-      # host specific
-      "hosts/idols-${name}/home.nix"
-    ];
+  tags = ["corax" "homelab-network"];
+  ssh-user = "root";
+
+  modules = {
+    nixos-modules =
+      (map mylib.relativeToRoot [
+        # common
+        "secrets/nixos.nix"
+        "modules/nixos/server/server.nix"
+        "modules/nixos/server/kubevirt-hardware-configuration.nix"
+        # host specific
+        "hosts/${name}"
+      ])
+      ++ [
+      ];
   };
 
-  modules-i3 = {
-    nixos-modules =
-      [
-        {
-          modules.desktop.xorg.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.impermanence.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules;
-    home-modules =
-      [
-        {modules.desktop.i3.enable = true;}
-      ]
-      ++ base-modules.home-modules;
-  };
-
-  modules-hyprland = {
-    nixos-modules =
-      [
-        {
-          modules.desktop.wayland.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.impermanence.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules;
-    home-modules =
-      [
-        {modules.desktop.hyprland.enable = true;}
-      ]
-      ++ base-modules.home-modules;
-  };
+  systemArgs = modules // args;
 in {
-  nixosConfigurations = {
-    # with i3 window manager
-    "${name}-i3" = mylib.nixosSystem (modules-i3 // args);
-    # host with hyprland compositor
-    "${name}-hyprland" = mylib.nixosSystem (modules-hyprland // args);
-  };
+  nixosConfigurations.${name} = mylib.nixosSystem systemArgs;
 
-  # generate iso image for hosts with desktop environment
-  packages = {
-    "${name}-i3" = inputs.self.nixosConfigurations."${name}-i3".config.formats.iso;
-    "${name}-hyprland" = inputs.self.nixosConfigurations."${name}-hyprland".config.formats.iso;
-  };
+  colmena.${name} =
+    mylib.colmenaSystem (systemArgs // {inherit tags ssh-user;});
+
+  packages.${name} = inputs.self.nixosConfigurations.${name}.config.formats.kubevirt;
 }
