@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  myvars,
   ...
 }: let
   hostName = "corax"; # Define your hostname.
