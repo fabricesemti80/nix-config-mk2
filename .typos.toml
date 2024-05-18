@@ -1,3 +1,4 @@
+# https://github.com/crate-ci/typos
 [files]
 ignore-dot = true
 ignore-files = true
