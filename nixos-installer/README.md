@@ -131,12 +131,12 @@ umount /mnt  # create-btrfs
 #     2. improve the performance of disks with low IOPS / RW throughput, such as HDD and SATA SSD.
 #   2. Save the disk space.
 mkdir /mnt/{nix,tmp,swap,persistent,snapshots,boot}  # mount-1
-mount -o compress-force=zstd:1,noatime,subvol=@nix /dev/mapper/crypted-nixos /mnt/nix  # mount-1
-mount -o compress-force=zstd:1,noatime,subvol=@guix /dev/mapper/crypted-nixos /mnt/gnu  # mount-1
-mount -o compress-force=zstd:1,subvol=@tmp /dev/mapper/crypted-nixos /mnt/tmp  # mount-1
-mount -o subvol=@swap /dev/mapper/crypted-nixos /mnt/swap  # mount-1
-mount -o compress-force=zstd:1,noatime,subvol=@persistent /dev/mapper/crypted-nixos /mnt/persistent  # mount-1
-mount -o compress-force=zstd:1,noatime,subvol=@snapshots /dev/mapper/crypted-nixos /mnt/snapshots  # mount-1
+mount -o compress-force=zstd:1,noatime,subvol=@nix /dev/mapper/encrypted-nixos /mnt/nix  # mount-1
+mount -o compress-force=zstd:1,noatime,subvol=@guix /dev/mapper/encrypted-nixos /mnt/guix  # mount-1
+mount -o compress-force=zstd:1,subvol=@tmp /dev/mapper/encrypted-nixos /mnt/tmp  # mount-1
+mount -o subvol=@swap /dev/mapper/encrypted-nixos /mnt/swap  # mount-1
+mount -o compress-force=zstd:1,noatime,subvol=@persistent /dev/mapper/encrypted-nixos /mnt/persistent  # mount-1
+mount -o compress-force=zstd:1,noatime,subvol=@snapshots /dev/mapper/encrypted-nixos /mnt/snapshots  # mount-1
 mount /dev/nvme0n1p1 /mnt/boot  # mount-1
 
 # create a swapfile on btrfs file system
