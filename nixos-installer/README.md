@@ -110,10 +110,10 @@ Formatting the root partition:
 # NOTE: `cat shoukei.md | grep create-btrfs > btrfs.sh` to generate this script
 mkfs.fat -F 32 -n ESP /dev/nvme0n1p1  # create-btrfs
 # format the root partition with btrfs and label it
-mkfs.btrfs -L encrypted-nixos /dev/mapper/crypted-nixos   # create-btrfs
+mkfs.btrfs -L encrypted-nixos /dev/mapper/encrypted-nixos   # create-btrfs
 
 # mount the root partition and create subvolumes
-mount /dev/mapper/crypted-nixos /mnt  # create-btrfs
+mount /dev/mapper/encrypted-nixos /mnt  # create-btrfs
 btrfs subvolume create /mnt/@nix  # create-btrfs
 btrfs subvolume create /mnt/@guix  # create-btrfs
 btrfs subvolume create /mnt/@tmp  # create-btrfs
