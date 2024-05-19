@@ -183,7 +183,7 @@ Clone this repository:
 nix-shell -p git vim gnumake
 
 # clone this repository
-git clone https://github.com/fabricesemti80/nix-config.git
+git clone https://github.com/fabricesemti80/nix-config-mk2.git
 ```
 
 Then, generate the NixOS configuration:
@@ -193,7 +193,7 @@ Then, generate the NixOS configuration:
 nixos-generate-config --root /mnt
 
 # we need to update our filesystem configs in old hardware-configuration.nix according to the generated one.
-cp /etc/nixos/hardware-configuration.nix ./nix-config/hosts/idols_ai/hardware-configuration-new.nix
+cp /mnt/etc/nixos/hardware-configuration.nix ./nix-config/hosts/idols_ai/hardware-configuration-new.nix
 vim .
 ```
 
