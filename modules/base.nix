@@ -10,10 +10,10 @@
     ]
     ++ (import ../overlays args);
 
-  # Add my private PKI's CA certificate to the system-wide trust store.
-  security.pki.certificateFiles = [
-    ../certs/ecc-ca.crt
-  ];
+  # # Add my private PKI's CA certificate to the system-wide trust store. #TODO: no certs!
+  # security.pki.certificateFiles = [
+  #   ../certs/ecc-ca.crt
+  # ];
 
   # auto upgrade nix to the unstable version
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284
@@ -73,9 +73,7 @@
     #    2. Never leave the device and never sent over the network.
     # 2. Or just use hardware security keys like Yubikey/CanoKey.
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIKlN+Q/GxvwxDX/OAjJHaNFEznEN4Tw4E4TwqQu/eD6 ryan@idols-ai"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPoa9uEI/gR5+klqTQwvCgD6CD5vT5iD9YCNx2xNrH3B ryan@fern"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPwZ9MdotnyhxIJrI4gmVshExHiZOx+FGFhcW7BaYkfR ryan@harmonica"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJpVWYmXPpqVmlHdixDR//vdfD+sryvYmpH2Dj1/Otx fabrice@fabricesemti.com"
     ];
   };
 
@@ -90,22 +88,24 @@
 
     # substituers that will be considered before the official ones(https://cache.nixos.org)
     substituters = [
-      # cache mirror located in China
-      # status: https://mirror.sjtu.edu.cn/
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
-      # status: https://mirrors.ustc.edu.cn/status/
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      # # cache mirror located in China
+      # # status: https://mirror.sjtu.edu.cn/
+      # # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # # status: https://mirrors.ustc.edu.cn/status/
+      # "https://mirrors.ustc.edu.cn/nix-channels/store"
 
       "https://nix-community.cachix.org"
-      # my own cache server
-      "https://ryan4yin.cachix.org"
+
+      # # my own cache server
+      # "https://ryan4yin.cachix.org"
+
       # cuda-maintainer's cache server
       "https://cuda-maintainers.cachix.org"
     ];
 
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
+      # "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
     ];
     builders-use-substitutes = true;
