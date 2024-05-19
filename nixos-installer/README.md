@@ -183,7 +183,7 @@ Clone this repository:
 nix-shell -p git vim gnumake
 
 # clone this repository
-git clone https://github.com/ryan4yin/nix-config.git
+git clone https://github.com/fabricesemti80/nix-config.git
 ```
 
 Then, generate the NixOS configuration:
