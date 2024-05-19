@@ -200,7 +200,7 @@ vim .
 Then, Install NixOS:
 
 ```bash
-cd ~/nix-config/hosts/idols_ai/nixos-installer
+cd ./nix-config-mk2/nixos-installer
 
 # run this command if you're retrying to run nixos-install
 rm -rf /mnt/etc
